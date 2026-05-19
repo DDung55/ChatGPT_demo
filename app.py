@@ -320,7 +320,7 @@ with st.sidebar:
         title = conv["title"]
         short_title = title[:35] + "..." if len(title) > 35 else title
         # Dùng st.button để giao diện giống một menu có thể click (mặc dù hiện tại chưa gắn chức năng click)
-        st.markdown(f"🗄️ **{short_title}**")
+        st.markdown(f"{short_title}")
 
     # 🌟 THÊM DÒNG NÀY ĐỂ KHỞI TẠO BIẾN TRƯỚC (ĐẢM BẢO KHÔNG BỊ NAMEERROR)
     current_user_msgs = []
