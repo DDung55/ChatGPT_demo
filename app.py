@@ -322,18 +322,21 @@ with st.sidebar:
         # Dùng st.button để giao diện giống một menu có thể click (mặc dù hiện tại chưa gắn chức năng click)
         st.markdown(f"🗄️ **{short_title}**")
 
-    # 2. Hiển thị cuộc trò chuyện HIỆN TẠI ĐANG CHAT
+    # 🌟 THÊM DÒNG NÀY ĐỂ KHỞI TẠO BIẾN TRƯỚC (ĐẢM BẢO KHÔNG BỊ NAMEERROR)
+    current_user_msgs = []
+
+    # Tự động trích xuất các câu hỏi của User từ phiên chat hiện tại
     if "messages" in st.session_state:
         current_user_msgs = [msg["content"] for msg in st.session_state.messages if msg["role"] == "user"]
-        if current_user_msgs:
-            curr_title = current_user_msgs[0]
-            short_curr = curr_title[:35] + "..." if len(curr_title) > 35 else curr_title
-            st.markdown(f"🟢 *{short_curr}*")
-            
-    # Nếu trống trơn thì báo không có
+        
+    if current_user_msgs:
+        curr_title = current_user_msgs[0]
+        short_curr = curr_title[:35] + "..." if len(curr_title) > 35 else curr_title
+        st.markdown(f"🗄️ **{short_curr}**")
+
     # Nếu trống trơn cả lịch sử cũ lẫn cuộc trò chuyện hiện tại thì mới báo không có
     if len(st.session_state.past_conversations) == 0 and not current_user_msgs:
-        st.caption("Không có cuộc trò chuyện nào.")  
+        st.caption("Không có cuộc trò chuyện nào.")
     
 
 try:
