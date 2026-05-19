@@ -331,19 +331,10 @@ with st.sidebar:
             st.markdown(f"🟢 *{short_curr}*")
             
     # Nếu trống trơn thì báo không có
-    if len(st.session_state.past_conversations) == 0 and ("messages" not in st.session_state or len(st.session_state.messages) == 0):
-        st.caption("Không có cuộc trò chuyện nào.")   
+    # Nếu trống trơn cả lịch sử cũ lẫn cuộc trò chuyện hiện tại thì mới báo không có
+    if len(st.session_state.past_conversations) == 0 and not current_user_msgs:
+        st.caption("Không có cuộc trò chuyện nào.")  
     
-
-st.markdown(
-    '<div class="main-title">🤖 AI Assistant</div>',
-    unsafe_allow_html=True
-)
-
-st.markdown(
-    '<div class="subtitle">Chatbot AI thông minh có memory và internet realtime</div>',
-    unsafe_allow_html=True
-)
 
 try:
     with open(
