@@ -1,0 +1,15 @@
+[theme]
+
+base="light"
+
+primaryColor="#8b5cf6"
+
+backgroundColor="#ffffff"
+
+secondaryBackgroundColor="#ede9fe"
+
+textColor="#111827"
+
+[client]
+showErrorDetails = false
+toolbarMode = "viewer" # Chế độ viewer sẽ tự động xóa sạch các nút phát lại, xóa bộ nhớ đệm, cấu hình... chỉ để xem.
